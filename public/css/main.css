@@ -1,0 +1,117 @@
+/* MAIN POSTS PAGE */
+.post {
+  background: #fff;
+  padding:10px 0;
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.4);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.info {
+  
+  font-size: 16px;
+  margin-left: 20px;
+  margin-top: 3px;
+}
+
+.subinfo {
+  color:#999;
+   /*font-weight:bolder;*/
+  text-decoration-color: currentColor;
+  font-size: 11px;
+  margin-left: 20px;
+  margin-top: 3px;
+}
+
+.url {
+  font-weight: normal;
+  color:#999;
+  font-size:11px;
+  
+}
+
+.comments {
+	margin-left:10px;
+	margin-top:5px;
+}
+
+/* Comment Box */
+.mystyle input[type="text"] {
+  height: 60px;
+  font-size: 1px;
+  line-height: 14px;
+}
+.comments {
+  background: #fff;
+  margin-left: 25px;
+  margin-bottom: 2px;
+  border-bottom-color: currentColor; 
+}
+.commentsDetail {
+  color:#999;
+  font-size:11px;
+  background: #fff;
+  
+  margin-top: -5px;
+  border-bottom-color: currentColor;
+  
+}
+
+/* PROFILE PAGE */
+.prof-img{
+  width:100%;
+  max-width:100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+}
+
+.name {
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+
+.nav-tabs {
+  margin-top:30px;
+}
+
+.vote {
+  height:20px;
+  cursor: pointer;
+}
+
+.auth-forms {
+  max-width:400px;
+  margin:0 auto;
+  background: #fff;
+  padding:1px 25px 25px 25px;
+  -moz-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.cmt-form {
+  margin-top:30px;
+}
+
+.cmt {
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px solid #ccc;
+}
+
+.cmt .author {
+  font-size:11px;
+  color:#bbb;
+}
+.awesome {
+	font-family: 'Bradley Hand ITC';
+	font-size: 30px;
+	font-weight: bold;
+}
+.noun {
+    text-decoration: none;
+}

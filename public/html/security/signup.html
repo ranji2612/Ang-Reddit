@@ -1,0 +1,29 @@
+<div>
+    <form ng-submit="security.signup(user.username, user.email, user.password, user.password2)">
+        <div>
+            <label>Username:</label>
+            <input type="text" required name="username" ng-model="user.username"/><br/>
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="email" required name="email" ng-model="user.email"/><br/>
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" required name="password" ng-model="user.password"/>
+            <input type="text" class="password-strength-{{user.passwordStrength}}" disabled/>
+        </div>
+        <div>
+            <label>Repeat password:</label>
+            <input type="password" required name="password2" ng-model="user.password2"/>
+        </div>
+        <div>
+            <input id="submit" type="submit" value="Sign up" ng-disabled="user.passwordStrength < 2"/>
+        </div>
+    </form>
+    <p>
+        <small>Hint - some strong password are correcthorsebatterystaple, rWibMFACxAUGZmxhVncy,
+            Ba9ZyWABu99[BK#6MBgbH88Tofv)vs$w
+        </small>
+    </p>
+</div>

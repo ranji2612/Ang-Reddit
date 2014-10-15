@@ -1,0 +1,49 @@
+
+<div >
+	<div ng-show="security.isAuthenticated">
+		<div class="row">
+			<div class="col-sm-5 col-offset-1 bold awesome">
+				Share an awesome thing...</div><br/><br/>
+		</div>
+		<form ng-submit="addNewPost()">
+			<div class="row">
+				<div class="col-md-6 col-offset-5">
+			  <input class="input form-control" type="text" ng-model="post.title" placeholder="Post Title"/></div> 
+				<div class="col-sm-3 col-offset-1">
+					<input class="input form-control" type="text" ng-model="post.url" placeholder="URL"/></div>
+			  <input class="btn" type="submit" value="Add Post"  />
+			</div>
+		</form>
+	</div>
+	<hr width="60%"/>
+	<div class="posts-page">
+		<div ng-repeat="post in posts" class="post">
+			<div class="row">
+				
+
+				<div class="col-xs-11 ">
+					<div class="info">
+						
+						<a href="{{ post.url }}" target="_blank"><b>{{ post.title }}</b></a>
+						<span class="url">({{ post.url | getDomain }})</span><br/>
+					</div>
+
+					<div>
+						<span class="subinfo">
+							{{post.cd.pt}}&nbsp;points
+							&nbsp;  &nbsp;  &nbsp;
+							<a href="/posts/{{ post._id }}" class="url">comments ({{post.cd.noc}})</a> 
+							&nbsp;  &nbsp;  &nbsp;
+							Submitted by - {{post.cd.crt}}
+							
+							<div ng-show="isSameUser($index)"><a ng-click="deletePost(post._id,$index)" class="url" >&nbsp;  &nbsp;  &nbsp; Delete</a></div>
+							&nbsp;  &nbsp;  &nbsp;
+							{{post.cd.tm | timeShow }}
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br/>&nbsp;
+	</div>
+</div>

@@ -1,0 +1,125 @@
+<html>
+<head><title>Angular</title>
+
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/jumbotron-narrow.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<base href="/">
+</head>
+<body  ng-app="mainApp">
+	<div>
+
+	<div class="container" ng-controller="homeCtrl">
+		  <div class="header">
+			<ul class="nav nav-pills pull-right">
+			  <li class="{{menuBarButton[0]}}" ng-click="menuButtonClick(0)"><a href="/home">Home</a></li>
+			  <li class="{{menuBarButton[1]}}" ng-click="menuButtonClick(1)"><a href="/about">About</a></li>
+			  <!-- Switching between Login and Account -->
+			  <li class="{{menuBarButton[2]}}" ng-hide="security.isAuthenticated"><a href="" ng-click="menuButtonClick(2)">Login</a></li>
+			  <li class="{{menuBarButton[2]}}" ng-click="menuButtonClick(2)" ng-show="security.isAuthenticated"><a href="/profile">{{security.user.local.username}}</a></li>
+				<li ng-click="logout()" ng-show="security.isAuthenticated"><a href="">Logout</a></li>
+			</ul>
+			<h3 class="text-muted" ><div ng-click="gotoHome()"><a style="text-decoration : none;color:#211">Code Board</a></div></h3>
+		  </div>
+
+		<!--
+		Lgin and Sign up page -->
+		<div ng-show="!security.isAuthenticated && !!menuBarButton[2]">
+			<div class="row">
+			<div class="col-sm-4 col-sm-offset-4 " ng-show="showLogin">
+				<form  >
+					<div>
+						<label class="form">Username</label><br/>
+						<input type="text" class="input form-control" name="username" ng-model="username" /><br/>
+					</div>
+					<div>
+						<label>Password</label><br/>
+						<input class="input form-control" type="password" name="password" ng-model="password" /><br/><br/><br/><br/>{{loginMessage}}<br/><br/><br/><br/><br/><hr/>
+					</div>
+					<div >
+						<button ng-click="securityLogin(username, password)" type="submit" class="col-sm-6 col-offset-2 btn btn-default post">Log In</button>
+						<button ng-click="toggleSignin()" type="submit" class="col-sm-6 col-offset-1 btn btn-default post">Go to Sign Up</button>
+					</div><hr/>
+				</form>
+				<br/>
+				</div>
+		
+			<div class="col-sm-4 col-sm-offset-4"   ng-show="!showLogin">
+				<div>
+					<form >
+						<div>
+							<label>Username</label>
+							<input class="input form-control" type="text" required name="username" ng-model="su_username"/><br/>
+						</div>
+						<div>
+							<label>Email</label>
+							<input class="input form-control" type="email" required name="email" ng-model="su_email"/><br/>
+						</div>
+						<div>
+							<label>Password</label>
+							<input class="input form-control" type="password" required name="password" ng-model="su_password"/><br/>
+						
+						</div>
+						<div>
+							<label>Retype password</label>
+							<input class="input form-control" type="password" required name="password2" ng-model="su_password2"/>
+						</div><br/>
+						{{errorMsg}}<hr/>
+						<div >
+							<button ng-click="toggleSignin()" type="submit" class="col-sm-6 col-offset-2 btn btn-default post">Back to Sign In</button>
+							<button ng-click="securitySignup(su_username, su_email, su_password, su_password2)" type="submit" class="col-sm-6 col-offset-1 btn btn-default post">Sign up</button>
+					</div><hr/>
+					</form>
+				</div>
+			</div>
+			</div>
+			
+			<br/><br/><br/>
+		</div>
+		<!-- End of login part- Replacement with directive in future-->
+		
+		
+		<!--			 Code Below - Angular Routing for Templating		-->
+		<div  ng-view="">
+		</div>
+
+		<!--			 Code Above 			-->
+			<br/>
+		<div class="footer">
+			<div class="row">
+				<div class="col-md-3">
+					<div >
+						<p >© Ranjith Kumar 2014</p>
+					</div>
+				</div>
+				<div class="col-md-9" align="right">
+					<div align="right">
+				  <a href="http://nodejs.org/" target="_blank"><img height="40" src="images/node_logo.png"></a> &nbsp;&nbsp;<a href="" target="_blank" style="text-decoration : none">Express</a>&nbsp;&nbsp;
+				  <a href="https://angularjs.org/" target="_blank"><img height="20" src="images/angular_logo.png"></a> &nbsp;&nbsp;
+				  <a href="http://www.mongodb.com/" target="_blank"><img height="20" src="images/mongo_logo.png"></a>   &nbsp;&nbsp;
+				  <a href="http://www.mongodb.com/" target="_blank" class="bs-docs-booticon"><img height="20" src="images/bootstrap_logo.png"></a>
+			  </div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	</div>
+
+	<!-- Loading scripts at the end -->
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular-route.js"></script>
+	<script src="app.js"></script>
+	<script src="services/post.js"></script>
+	<script src="services/postDetailService.js"></script>
+	<script src="controllers/posts.js"></script>
+	<script src="controllers/postDetails.js"></script>
+	<script src="controllers/user.js"></script>
+	<script src="filters/getDomain.js"></script>
+	<script src="filters/timeShow.js"></script>
+	
+	<!-- End of Scripts -->
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name"         : "AngNews",
+  "version"      : "0.0.1",
+  "description"  : "Angular News",
+  "main"         : "server.js",
+  "author"       : "Ranjith",
+  "dependencies" : {
+    	"express"				: "~4.0.0",
+    	"mongoose"				: "~3.6.2",
+		"body-parser"			: "~1.0.0",
+	  
+		"cookie-parser"			: "*",
+		"passport" 				: "*", 		
+    	"passport-local" 		: "*", 	
+    	"passport-facebook" 	: "*",
+	  	"passport-twitter" 		: "*",
+	  	"passport-google-oauth" : "*",
+    	"connect-flash" 		: "*", 	
+    	"bcrypt-nodejs" 		: "latest",
+		"express-session"		: "latest"	
+  }
+}

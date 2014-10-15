@@ -1,0 +1,43 @@
+<div>
+	<div >
+		<div class="info">
+
+			<a href="{{ post.url }}" target="_blank"><b>{{ post.title }}</b></a>
+			<span class="url">({{ post.url | getDomain }})</span><br/>
+		</div>
+
+		<div>	
+			<span class="subinfo">
+				{{post.cd.pt}}&nbsp;points
+				&nbsp;  &nbsp;  &nbsp;
+				comments ({{post.cd.noc}}) 
+				&nbsp;  &nbsp;  &nbsp;
+				Submitted by - {{post.cd.crt}}
+				
+				<a ng-click="deletePost(post._id)" class="url">&nbsp;  &nbsp;  &nbsp; Delete</a>
+				&nbsp;  &nbsp;  &nbsp;
+				{{post.cd.tm | timeShow }}
+			</span>
+		</div>
+		<br/>
+		<div class="info" ng-show="security.isAuthenticated">
+		<form class="mystyle" ng-submit="addComment()" >
+			<textarea ng-model="newComment" class="form-control" rows="4" placeholder="Want to add comment ? Type here" required ></textarea><br/>
+			<input type="submit" value="Add Comment" />
+		</form>
+		</div>
+	</div>
+
+	<hr/><br/>
+	<div>
+		<div ng-repeat="cmt in cmts" class="comments">
+			<p>{{ cmt.cmt }}</p>
+			<p class="commentsDetail">{{ cmt.crt }} &nbsp;&nbsp;&nbsp; {{cmt.tm | timeShow }}</p>
+			<hr/>
+		</div>
+	</div>
+	<br/></hr>	
+
+	<a href="/home">Back to Posts</a>
+
+</div>
