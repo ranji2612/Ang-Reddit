@@ -1,7 +1,8 @@
 // DB Model Files
 var postModel	= require('../models/postModel');
 var cmtModel 	= require('../models/cmtModel');
-var UserModel  	= require('../../app/models/userModel');
+var UserModel  	= require('../models/userModel');
+var userVoteModel  	= require('../models/userVoteModel');
 var mongoose 	= require('mongoose');
 var ObjectId 	= mongoose.Types.ObjectId;
 
@@ -57,7 +58,40 @@ module.exports = function(app, passport) {
 				// Not sending the JSON, since its just the new element it can be added there itself. This is Just to add to DB. No point in sending a big JSON back
 			});
 		});
-	
+	// Upvote
+	app.route('/api/posts/upvote/:post_id')
+		.post( function(req,res) {
+		console.log('Reached here-------------------------');
+		var s = 'cmts.'+req.user.id;
+		console.log(s);
+		userVoteModel.findOne({uid: req.user.id, pid:req.params.post_id}, function(err,post) {
+			console.log(post);
+			if (err) {
+				res.send(err);
+			}
+			if(post)
+				res.json({res:'Already upvoted'});
+			else {
+				postModel.update({_id:req.params.post_id},{$inc: {"cd.pt": 1}}, function(err) {
+					if (err) {
+						res.send(err);
+					}
+					//for post add to pid
+					userVoteModel.create({uid:req.user.id, pid:req.params.post_id}, function(err, data) {
+						if (err)
+							res.send(err);
+						res.json({res:'upvoted'});
+					});
+							
+					});
+				}
+			});
+			/*postModel.update({_id:req.params.post_id},{$inc: {"cd.pt": 1}}, function(err) {
+					if (err) {
+						res.send(err);
+					}
+				});*/
+	});
 	app.route('/api/posts/:post_id')
 		
 		.delete(function(req, res) {

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('postsCtrl', function ($scope,Post) {
+app.controller('postsCtrl', function ($scope,Post,$http) {
 	//page data-binding
 	
 	$scope.posts = [];
@@ -11,7 +11,16 @@ app.controller('postsCtrl', function ($scope,Post) {
 		.success(function(data) {
 			$scope.posts = data.reverse();
 		});
-	
+	//upvote
+	$scope.tf = function(postId,index) {
+		console.log(postId);
+		$http.post('/api/posts/upvote/'+postId)
+		.success( function(data) {
+			if (data.res=='upvoted') {
+				$scope.posts[index].cd.pt++;
+			}
+		});
+	};
 	//adding a new post
 	$scope.addNewPost = function() {
 		console.log($scope.post.url);

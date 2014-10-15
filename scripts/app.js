@@ -27,6 +27,7 @@ app.config(function ($routeProvider, $locationProvider) {
 
 
 app.controller('homeCtrl', function ($scope,$http,$location) {
+	
     //For security
 	$scope.security = {user:'', isAuthenticated : false};
 	$scope.loginMessage = "";
