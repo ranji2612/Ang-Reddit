@@ -9,3 +9,13 @@ We can share awesome things, upvode and discuss them..
 
 Here are some of the screen shots.
 
+
+Before LogIn, (only read privilages)
+![alt tab](http://i.imgur.com/bRRLT6Z.png)
+
+After login
+![alt tag](http://i.imgur.com/XXfFCXs.png)
+
+Comments for a post
+![alt tab](http://i.imgur.com/aOQzGAu.png)
+
